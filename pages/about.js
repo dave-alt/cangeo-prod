@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../components/navbar";
 import Skyline from "../components/skyline";
 import Footer from "../components/footer";
+import Works from "../components/works";
 
 function Whycangeo() {
   return (
@@ -104,6 +105,7 @@ export default function about() {
       <div className="theAbout">
         <Whycangeo />
         <ProjectsContainer />
+        <Works/>
         <div className="team">
           <h1 className="utility-h1">Our Team</h1>
           <p>Geo Frantine - Digital Marketing</p>

@@ -377,6 +377,7 @@ h3{
 }
 .service-card-heading{
     text-align:center;
+    color:#198995;
    
 }
 .service-card-image-container{
@@ -806,9 +807,48 @@ overflow:hidden;
 /******The Big About Page End*******/
 
 
+/*****************The Works *****/
+.works-container{
+    display:none;
+}
+.work-container{
+   background-color: #242530;
+}
+.work-card{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    
+
+}
+.work-image-container{
+    /* overflow:hidden; */
+    width:100%;
+}
+.work-image-container img{
+    width:100%;
+}
+.work-content-container{
+    background:#242530;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+.work-content{
+    color:#ccc;
+    padding:10%;
+}
+.work-heading{
+    color:#ccc;
+}
+/*****************The Works *****/
+
 
 /* *******************Media queries************** */
 @media only screen and (min-width:913px){
+    .works-container{
+        display:block;
+    }
     .contact{
         background-image:url("/contact.jpeg");
         background-size: cover;
@@ -884,6 +924,7 @@ overflow:hidden;
         flex-direction:row;
         align-items: space-evenly;
         justify-content:space-evenly;
+        display:none;
     }
     .socials{
         width:20%;
