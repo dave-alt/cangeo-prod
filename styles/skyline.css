@@ -1,0 +1,67 @@
+
+.ferrisWheel{
+    transform-origin: 18% 91%;
+    animation-name:ferris;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+    /* animation-duration: 10s; */
+}
+
+.blimp{
+    transform:scale(0.2);
+    transform-origin: 50% 50%;
+    animation:hovering 2s ease-in-out infinite alternate ;
+}
+.blimpContainer{
+    transition:0.5s ease-out all;
+}
+
+@keyframes ferris {
+    from{
+        transform:rotateZ(0deg);
+        
+    }
+    to{
+        transform:rotateZ(359deg);
+    }
+}
+
+@keyframes hovering {
+    from{
+        transform:scale(-0.2,0.2) translateY(-135px) translateX(800px);
+        
+    }
+    to{
+        transform:scale(-0.2,0.2) translateY(-100px) translateX(800px);
+    }
+}
+.train{
+    animation:lap 5s ease-in-out infinite alternate ;
+}
+
+.lights path{
+    fill:"black";
+    animation-name:pulse ;
+    animation-timing-function:steps(2,start);
+    animation-iteration-count:infinite;
+   
+}
+@keyframes lap {
+    from{
+        transform:scale(0.2) translateX(1350px) translateY(350px);
+        
+    }
+    to{
+        transform:scale(0.2) translateX(450px) translateY(350px);
+    }
+}
+@keyframes pulse {
+ 
+    from{
+        fill:rgb(255, 255, 255);
+     }
+ 
+    to{
+       fill:rgb(0, 0, 0);
+    }
+}
