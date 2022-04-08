@@ -6,29 +6,49 @@ import axios from "axios";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 
-
-
 export default function Form() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
     control,
   } = useForm({
     mode: "onTouched",
+    defaultValues:{
+      name:"",
+      email:"",
+      phone:"",
+      message:"",
+    }
   });
 
   const onSubmit = (data) => {
     // console.log(data);
+    document.querySelector("form .btn").disabled = true;
+    document.querySelector("form .btn").innerText = "...submitting";
+
     axios
       .post("https://cangeo.herokuapp.com/api/v1/lead/create", data)
-      .then((res) =>{
-        if(res.status ===200)
-        {
-          document.querySelector('.feedcon').style.display="flex";
-          setTimeout(() =>{
-            document.querySelector('.feedcon').style.display="none";
-          },1000)
+      .then((res) => {
+        if (res.status === 200) {
+          setTimeout(() => {
+            document.querySelector("form .btn").innerText = "submitted!!";
+          }, 2000);
+          setTimeout(() => {
+            document.querySelector("form .btn").disabled = false;
+            // document.querySelector('.clearable1').value="";
+            // document.querySelector('.clearable2').value="";
+            // document.querySelector('.clearable3').value="";
+            // document.querySelector('.form-control').value="";
+            reset();
+            document.querySelector("form .btn").innerText = "SUBMIT";
+          }, 4000);
+
+          // document.querySelector('.feedcon').style.display="flex";
+          // setTimeout(() =>{
+          //   document.querySelector('.feedcon').style.display="none";
+          // },1000)
         }
       })
       .catch((err) => console.log(err));
@@ -41,6 +61,7 @@ export default function Form() {
       <h1>Reach Us</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
+          className="clearable1"
           type="text"
           {...register("name", { required: true })}
           placeholder="Enter your name"
@@ -49,6 +70,7 @@ export default function Form() {
           <p className="error">*Name is required</p>
         )}
         <input
+          className="clearable2"
           type="text"
           placeholder="Enter your email"
           {...register("email", {
@@ -80,7 +102,7 @@ export default function Form() {
         />
 
         <textarea
-          className="message"
+          className="message clearable3"
           type="text"
           placeholder="Enter your message"
           {...register("message", { required: true })}
@@ -89,7 +111,7 @@ export default function Form() {
           <p className="error">*Please enter a message</p>
         )}
 
-        <button className="btn" type="submit">
+        <button className="btn form-btn" type="submit">
           SUBMIT
         </button>
       </form>
