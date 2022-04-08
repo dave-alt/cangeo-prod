@@ -203,6 +203,7 @@ a[isactive="active"]{
     transform:scale(1.1); 
 
 }
+
 .hero video{
     height:118vh;
     filter:brightness(0.6);
@@ -505,7 +506,18 @@ form .btn{
     
     margin-top:20px;
     margin-bottom: 20px;
+
 }
+form .btn:disabled{
+    background-color: #7f7f7f;
+    color:rgb(201, 201, 201);
+    cursor: not-allowed;
+    transition:none;
+}
+form .btn:hover:disabled{
+    transform:scale(1);
+}
+
 .message{
     min-height:150px;
     text-align:left;
